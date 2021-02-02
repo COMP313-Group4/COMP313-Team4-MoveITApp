@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A5A580"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".CustomerCodeActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#FFEB3B"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        tools:text="moveIT App" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_marginTop="50dp"
+        android:textAlignment="center"
+        android:textColor="#792810"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:text="Log-In Verfication " />
+
+    <TextView
+        android:id="@+id/tv_phoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_marginTop="50dp"
+        android:textAlignment="center"
+        android:textColor="#792810"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:text="PHone Number " />
+
+    <LinearLayout
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+
+        android:layout_marginRight="5dp"
+        android:background="#F8FFFFFF"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/otpOne"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:inputType="number"
+            android:maxLength="1" />
+
+        <EditText
+            android:id="@+id/otpTwo"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+
+            android:inputType="number"
+            android:maxLength="1" />
+
+        <EditText
+            android:id="@+id/otpThree"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+
+            android:inputType="number"
+            android:maxLength="1" />
+
+        <EditText
+            android:id="@+id/otpFour"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+
+            android:inputType="number"
+            android:maxLength="1" />
+
+        <EditText
+            android:id="@+id/otpFive"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+
+            android:inputType="number"
+            android:maxLength="1" />
+
+        <EditText
+            android:id="@+id/otpSix"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+
+            android:inputType="number"
+            android:maxLength="1" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_verify"
+        android:layout_width="264dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#006699"
+        android:text="Verify"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+    <Button
+        android:id="@+id/btn_resendCode"
+        android:layout_width="264dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#006699"
+        android:text="Resend Code"
+        android:visibility="gone"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+</LinearLayout>

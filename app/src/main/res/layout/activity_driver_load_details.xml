@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A5A580"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".DriverLoadDetailsActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:textAlignment="center"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#FFEB3B"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="moveIT App"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#792810"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Load Details:" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ListView
+            android:id="@+id/lv_details"
+            android:layout_width="wrap_content"
+            android:layout_height="400dp" />
+
+
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_acceptLoad"
+        android:layout_width="264dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#006699"
+        android:text="Accept Load"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+    <Button
+        android:id="@+id/btn_confirmDelivery"
+        android:layout_width="264dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#006699"
+        android:text="Confirm Delivery"
+        android:textColor="#ffffff"
+        android:visibility="gone"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_delivered"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:visibility="gone"
+        android:text="Delivered"/>
+</LinearLayout>

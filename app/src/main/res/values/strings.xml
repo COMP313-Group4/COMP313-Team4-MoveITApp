@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">moveIT App</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="checkbox"></string>
+
+    <!--<string name="loadCategory1">1-100 kg</string>
+    <string name="loadCategory2">80-200 kg</string>
+    <string name="loadCategory3">200-500 kg</string>
+    <string name="loadCategory4">500-Beyond</string>-->
+    <string-array name="weight_category">
+        <item>Weight Category</item>
+        <item>1-100 KG</item>
+        <item>101-200 KG</item>
+        <item>201-300 KG</item>
+        <item>301-500 KG</item>
+        <item>Over 500 KG</item>
+    </string-array>
+    <!-- <string name="vehicleCategory1">Pickup Truck</string>
+    <string name="vehicleCategory2">Cargo Van</string>
+    <string name="vehicleCategory3">10\' Truck</string>
+    <string name="vehicleCategory4">17\' Truck</string>
+    <string name="vehicleCategory5">26\' Truck</string>-->
+
+    <string-array name="vehicle_category">
+        <item>Vehicle Category</item>
+        <item>Cargo Van</item>
+        <item>10M Truck</item>
+        <item>17M Truck</item>
+        <item>26M Truck</item>
+    </string-array>
+
+    <string name="item_prompt">Choose Category</string>
+    <string-array name="item_category">
+        <item>Load Category</item>
+        <item>Furniture</item>
+        <item>Electric Appliances</item>
+        <item>Luggages</item>
+        <item>Chemicals</item>
+        <item>Drinks-NonAlcohol</item>
+        <item>Drinks-Alcohol</item>
+    </string-array>
+    <string name="title_activity_driver_location">Map</string>
+    <string name="clear_values">Clear Values</string>
+    <string name="post_load">Post Load</string>
+    <string name="email_not_verfied">Email Not Verified !</string>
+    <string name="verify_now">Verify Now</string>
+
+    <!--<string-array name="loadCategoryList">
+        <item>@string/loadCategory1</item>
+        <item>@string/loadCategory2</item>
+        <item>@string/loadCategory3</item>
+        <item>@string/loadCategory4</item>
+    </string-array>
+    <string-array name="vehicleCategoryList">
+        <item>@string/vehicleCategory1</item>
+        <item>@string/vehicleCategory2</item>
+        <item>@string/vehicleCategory3</item>
+        <item>@string/vehicleCategory4</item>
+        <item>@string/vehicleCategory5</item>
+    </string-array>-->
+</resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "864122708815",
+    "firebase_url": "https://moveit-app-53c4c.firebaseio.com",
+    "project_id": "moveit-app-53c4c",
+    "storage_bucket": "moveit-app-53c4c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864122708815:android:72d60140586351b1319b3a",
+        "android_client_info": {
+          "package_name": "com.example.moveitapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864122708815-pg694n1vn22kh4kb4nl6fnl1a3rfpfan.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.moveitapp",
+            "certificate_hash": "7686cd1fe42037f9e725e6b12408511566afae75"
+          }
+        },
+        {
+          "client_id": "864122708815-9tqjluu91pc06bvajee2h104u0qrfvjs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLhAox0Jfcn76SKPPZ24CPG9VWnp8F6Co"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864122708815-9tqjluu91pc06bvajee2h104u0qrfvjs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

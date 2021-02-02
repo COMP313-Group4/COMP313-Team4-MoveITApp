@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A5A580"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".PostLoadActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textColor="#FFEB3B"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:text="moveIT App"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textColor="#792810"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:text="Post Load:" />
+
+        <EditText
+            android:id="@+id/tv_pickup"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:hint="pickup location"
+            android:inputType="textPostalAddress"
+            android:textAlignment="center"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/tv_destination"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:hint="destination location"
+            android:inputType="textPostalAddress"
+            android:textAlignment="center"
+            android:textColor="#000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_calculateMilage"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#006699"
+                android:text="Calculate Milage"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_milage"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#FFFFFF"
+                android:gravity="center_horizontal"
+                android:hint="Milage "
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:textColor="#792810"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/spinner_category"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#FFFFFF"
+            android:entries="@array/item_category"
+            android:prompt="@string/item_prompt"
+            android:textAlignment="center"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/et_weight"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:hint="weight in KG"
+            android:textAlignment="center"
+            android:textColor="#000000" />
+        <!--<Spinner
+            android:id="@+id/spinner_weight"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="264dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:textAlignment="center"
+            android:contextClickable="true"
+            android:background="#FFFFFF"
+            android:textColor="#000000"
+            android:dropDownWidth="match_parent"
+            android:entries="@array/weight_category"
+            android:padding="10dp"
+            android:popupElevation="18dp"
+            android:spinnerMode="dialog"
+            android:splitMotionEvents="false"
+            android:hint="Select Load"
+            android:layout_gravity="center_horizontal" />-->
+
+
+        <Spinner
+            android:id="@+id/spinner_truck"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:background="#FFFFFF"
+            android:contextClickable="true"
+            android:dropDownWidth="match_parent"
+            android:hint="Select Vehicle"
+            android:padding="10dp"
+            android:spinnerMode="dialog"
+            android:splitMotionEvents="false"
+            android:textAlignment="center"
+            android:textColor="#000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_calculateFees"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#006699"
+                android:padding="10dp"
+                android:text="Get Fees: "
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:fontFamily="sans-serif" />
+
+            <TextView
+                android:id="@+id/tv_fees"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:padding="10dp"
+                android:text="$ 0.0"
+                android:textColor="#792810"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:background="#FFFFFF"
+        android:textColor="#792810"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:text="If you agree, click POST LOAD"/>
+
+    <Button
+        android:id="@+id/btn_postLoad"
+        android:layout_width="264dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:background="#006699"
+        android:text="@string/post_load"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+    <Button
+        android:id="@+id/btn_resetValues"
+        android:layout_width="264dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:background="#006699"
+        android:text="@string/clear_values"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+</LinearLayout>

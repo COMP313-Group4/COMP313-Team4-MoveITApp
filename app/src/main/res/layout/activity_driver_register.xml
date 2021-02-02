@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A5A580"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".DriverRegisterActivity">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
+        android:text="moveIT App"
+        android:textAlignment="center"
+        android:textColor="#FFEB3B"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:paddingLeft="10dp"
+        android:text="Create Account"
+        android:textColor="#792810"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_driverName"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+
+        android:hint="full name"
+        android:textAlignment="center"
+        android:paddingLeft="2dp"
+        android:layout_gravity="center_horizontal" />
+    <EditText
+        android:id="@+id/et_driverEmail"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+
+        android:hint="email"
+        android:textAlignment="center"
+        android:paddingLeft="2dp"
+        android:layout_gravity="center_horizontal" />
+
+    <EditText
+        android:id="@+id/et_driverPassword"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+
+        android:hint="password"
+        android:textAlignment="center"
+        android:password="true"
+        android:layout_gravity="center_horizontal" />
+
+    <EditText
+        android:id="@+id/et_driverConfirmPassword"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+
+        android:hint="confirm password"
+        android:textAlignment="center"
+        android:password="true"
+        android:layout_gravity="center_horizontal" />
+    <EditText
+        android:id="@+id/et_driverAddress"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+
+        android:hint="address"
+        android:textAlignment="center"
+        android:paddingLeft="2dp"
+        android:layout_gravity="center_horizontal" />
+    <EditText
+        android:id="@+id/et_driverPhone"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+
+        android:hint="phone number"
+        android:textAlignment="center"
+        android:paddingLeft="2dp"
+        android:layout_gravity="center_horizontal" />
+    <Spinner
+        android:id="@+id/spinner_truckCategory"
+        android:layout_width="264dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="#FFFFFF"
+        android:textAlignment="center"
+
+        android:prompt="@string/item_prompt"
+        android:textColor="#000000"
+        android:layout_gravity="center_horizontal" />
+    <EditText
+        android:id="@+id/et_licensePlate"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+        android:hint="license plate"
+        android:textAlignment="center"
+        android:paddingLeft="2dp"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/btn_driverRegister"
+        android:layout_width="260dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="10dp"
+        android:background="#1556A0"
+        android:text="Register"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Already Registered?"
+            android:textColor="#792810"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_driverLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:paddingLeft="10dp"
+            android:text="Log In"
+            android:onClick="login"
+            android:textColor="#0B4280"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
+
+
+    <TextView
+        android:id="@+id/tv_driverMain"
+        android:layout_width="254dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#FFFFFF"
+        android:onClick="main"
+        android:paddingLeft="10dp"
+        android:text="Main Portal"
+        android:textAlignment="center"
+        android:textColor="#792810"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>
