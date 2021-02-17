@@ -153,13 +153,9 @@ public class CustomerFeedActivity extends AppCompatActivity {
                                 }
                             }
                         });
-
-
-
                         FirebaseUser user = firebaseAuth.getCurrentUser();
                         String email = user.getEmail();
                         String phone = user.getPhoneNumber();
-
                        // Toast.makeText(CustomerFeedActivity.this, "User: "+user.getUid(), Toast.LENGTH_SHORT).show();
                         DocumentReference documentReference = firestore.collection("loads").document();
                         Map<String, Object> load = new HashMap<>();
@@ -186,8 +182,6 @@ public class CustomerFeedActivity extends AppCompatActivity {
                                    // Toast.makeText(getApplicationContext(), "Current Load: " + loadsList.get(counter), Toast.LENGTH_LONG).show();
                                     counter++;
                                 }
-
-
                             } else {
                                 Toast.makeText(getApplicationContext(), "Error: " + task.getException(), Toast.LENGTH_LONG).show();
                             }
@@ -222,7 +216,17 @@ public class CustomerFeedActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        btnViewQueries.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (CustomerFeedActivity.this, CustomerQueriesActivity.class );
+                intent.putExtra("email", email);
+                intent.putExtra("name", name);
+                intent.putExtra("userID", userId);
+                intent.putExtra("password", password);
+                startActivity(intent);
+            }
+        });
 //        btnViewQueries.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
