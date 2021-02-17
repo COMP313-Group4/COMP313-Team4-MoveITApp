@@ -61,7 +61,7 @@ public class CustomerQueriesActivity extends AppCompatActivity {
         btnOpenQueryForm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CustomerQueriesActivity.class);
+                Intent intent = new Intent(getApplicationContext(), CustomerChatActivity.class);
                 startActivity(intent);
             }
         });
@@ -113,12 +113,9 @@ public class CustomerQueriesActivity extends AppCompatActivity {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                           /* String loadDate = (String) ((TextView)view).getText();
-                            Toast.makeText(getApplicationContext(), "Load: " + loadDate, Toast.LENGTH_LONG).show();*/
-
                             String queryId = (String) ((TextView)view).getText();
 
-                            Intent intent = new Intent (getApplicationContext(), CustomerQueriesActivity.class );
+                            Intent intent = new Intent (getApplicationContext(), CustomerChatActivity.class );
                             intent.putExtra("queryID", queryId);
                             intent.putExtra("email", email);
                             intent.putExtra("status", status);
