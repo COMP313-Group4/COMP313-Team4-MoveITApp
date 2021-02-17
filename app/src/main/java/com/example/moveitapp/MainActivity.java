@@ -44,14 +44,11 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
         });
-//        btnCSR.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, StaffLoginActivity.class);
-//                startActivity(intent);
-//                finish();
-//                return;
-//            }
-//        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+        finish();
     }
 }

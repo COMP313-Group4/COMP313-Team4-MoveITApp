@@ -55,7 +55,7 @@ public class CustomerFeedActivity extends AppCompatActivity {
     Button btnPostLoad, btnViewLoads, btnViewQueries;
     ListView lvCustomer;
 
-    Button btnLocaiton;
+    Button btnLocation;
     Button resendCode;
     TextView verifyMsg;
 
@@ -83,7 +83,7 @@ public class CustomerFeedActivity extends AppCompatActivity {
 
 
         btnPostLoad = (Button) findViewById(R.id.btn_postLoad);
-        btnLocaiton = (Button) findViewById(R.id.btn_location);
+        btnLocation = (Button) findViewById(R.id.btn_location);
         btnViewLoads= (Button) findViewById(R.id.btn_viewLoads);
         btnViewQueries = (Button) findViewById(R.id.btn_viewQueries);
         resendCode = findViewById(R.id.resendCode);
@@ -227,23 +227,9 @@ public class CustomerFeedActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        btnViewQueries.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent (CustomerFeedActivity.this, CustomerQueriesActivity.class );
-//                intent.putExtra("email", email);
-//                intent.putExtra("name", name);
-//                intent.putExtra("userID", userId);
-//                intent.putExtra("password", password);
-//                startActivity(intent);
-//            }
-//        });
 
 
-
-
-
-        btnLocaiton.setOnClickListener(new View.OnClickListener() {
+        btnLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CustomerFeedActivity.this, DriverLocation.class);
@@ -252,8 +238,6 @@ public class CustomerFeedActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
