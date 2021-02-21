@@ -7,8 +7,6 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.moveitapp.R;
-
 public class MainActivity extends AppCompatActivity {
 
     private Button btnCustomer, btnDriver, btnCSR;
@@ -39,6 +37,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DriverLoginActivity.class);
+                startActivity(intent);
+                finish();
+                return;
+            }
+        });
+
+        btnCSR.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CSRLoginActivity.class);
                 startActivity(intent);
                 finish();
                 return;
