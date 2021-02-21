@@ -38,9 +38,7 @@ public class CustomerQueriesActivity extends AppCompatActivity {
     ArrayAdapter<String> titleAdapter, queryIDAdapter;
 
     Button btnOpenQueryForm;
-
-    String userID, messageBody, queryID, email, status;
-
+    String userID, email, status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +71,7 @@ public class CustomerQueriesActivity extends AppCompatActivity {
                 .setTimestampsInSnapshotsEnabled(true)
                 .build();
         firestore.setFirestoreSettings(settings);
-
         userID = firebaseAuth.getCurrentUser().getUid();
-
         if (firebaseAuth.getCurrentUser() != null)
         {
             Task<QuerySnapshot> collection = firestore.collection("queries")
@@ -123,7 +119,6 @@ public class CustomerQueriesActivity extends AppCompatActivity {
                         }
                     });
         }
-
     } // end onCreate
 
 
@@ -133,12 +128,12 @@ public class CustomerQueriesActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.app_menu, menu);
         return true;
-    }
+    }   //  onCreateOptionsMenuEnd
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
         return super.onOptionsItemSelected(item);
-    }
-}
+    }   //  onOptionsItemSelectedEnd
+}   //  classEnd
