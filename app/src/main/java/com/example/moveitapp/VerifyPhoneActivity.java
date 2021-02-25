@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestoreSettings;
 
 import java.util.concurrent.TimeUnit;
 
-public class VerfiyPhoneActivity extends AppCompatActivity {
+public class VerifyPhoneActivity extends AppCompatActivity {
 
     EditText one, two, three, four, five, six;
     Button btnVerify, btnResendCode;
@@ -116,7 +115,7 @@ public class VerfiyPhoneActivity extends AppCompatActivity {
 
             @Override
             public void onVerificationFailed(FirebaseException e) {
-                Toast.makeText(VerfiyPhoneActivity.this, "OTP Verification failed !", Toast.LENGTH_LONG).show();
+                Toast.makeText(VerifyPhoneActivity.this, "OTP Verification failed !", Toast.LENGTH_LONG).show();
             }
         };
 
@@ -160,7 +159,7 @@ public class VerfiyPhoneActivity extends AppCompatActivity {
         firebaseAuth.getCurrentUser().linkWithCredential(credential).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-                Toast.makeText(VerfiyPhoneActivity.this, "Verified Phone", Toast.LENGTH_LONG).show();
+                Toast.makeText(VerifyPhoneActivity.this, "Verified Phone", Toast.LENGTH_LONG).show();
                 // send to another activity
             }
         });

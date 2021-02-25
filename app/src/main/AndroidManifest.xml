@@ -33,6 +33,7 @@
         <activity android:name=".CSRLoginActivity"/>
         <activity android:name=".CSRFeedActivity"/>
         <activity android:name=".CSRAvailableQueries"/>
+        <activity android:name=".CSROpenQueries"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -50,7 +51,7 @@
             android:label="@string/title_activity_driver_location" />
         <activity android:name=".CustomerViewLoadActivity" />
         <activity android:name=".PostLoadActivity" />
-        <activity android:name=".VerfiyPhoneActivity" />
+        <activity android:name=".VerifyPhoneActivity" />
         <activity android:name=".CustomerFeedActivity" />
         <activity android:name=".CustomerRegisterActivity" />
         <activity android:name=".CustomerLoginActivity" />
