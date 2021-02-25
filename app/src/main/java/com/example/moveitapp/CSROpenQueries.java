@@ -26,8 +26,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class CSRAvailableQueries extends AppCompatActivity {
-
+public class CSROpenQueries extends AppCompatActivity{
     ListView lvOpenQueries;
 
     FirebaseAuth firebaseAuth;
@@ -42,7 +41,7 @@ public class CSRAvailableQueries extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_queries);
+        setContentView(R.layout.activity_open_queries);
 
         lvOpenQueries = (ListView) findViewById(R.id.lv_queries);
 
@@ -54,10 +53,8 @@ public class CSRAvailableQueries extends AppCompatActivity {
                 .build();
         firestore.setFirestoreSettings(settings);
 
-
         staffID = firebaseAuth.getCurrentUser().getUid();
         queryList = new ArrayList<>();
-
 
         final Task<QuerySnapshot> collection = firestore.collection("OpenQueries")
                 .whereEqualTo("CsrID", staffID)
@@ -118,7 +115,6 @@ public class CSRAvailableQueries extends AppCompatActivity {
 
                 });
 
-
     }
 
     @Override
@@ -134,6 +130,4 @@ public class CSRAvailableQueries extends AppCompatActivity {
         startActivity(intent);
         return super.onOptionsItemSelected(item);
     }
-
-
 }
