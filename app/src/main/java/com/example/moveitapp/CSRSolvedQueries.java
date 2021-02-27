@@ -42,9 +42,9 @@ public class CSRSolvedQueries extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_queries);
+        setContentView(R.layout.activity_solved_queries);
 
-        lvSolvedQueries = (ListView) findViewById(R.id.lv_queries);
+        lvSolvedQueries = (ListView) findViewById(R.id.lv_solvedQueries);
 
         //firebase connection
         firebaseAuth = FirebaseAuth.getInstance();
@@ -133,6 +133,4 @@ public class CSRSolvedQueries extends AppCompatActivity {
         startActivity(intent);
         return super.onOptionsItemSelected(item);
     }
-
-
 }

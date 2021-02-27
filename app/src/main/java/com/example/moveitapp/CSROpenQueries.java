@@ -27,6 +27,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
 public class CSROpenQueries extends AppCompatActivity{
+
     ListView lvOpenQueries;
 
     FirebaseAuth firebaseAuth;
@@ -43,7 +44,7 @@ public class CSROpenQueries extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_queries);
 
-        lvOpenQueries = (ListView) findViewById(R.id.lv_queries);
+        lvOpenQueries = (ListView) findViewById(R.id.lv_openQueries);
 
         //firebase connection
         firebaseAuth = FirebaseAuth.getInstance();
@@ -53,8 +54,10 @@ public class CSROpenQueries extends AppCompatActivity{
                 .build();
         firestore.setFirestoreSettings(settings);
 
+
         staffID = firebaseAuth.getCurrentUser().getUid();
         queryList = new ArrayList<>();
+
 
         final Task<QuerySnapshot> collection = firestore.collection("OpenQueries")
                 .whereEqualTo("CsrID", staffID)
@@ -94,11 +97,7 @@ public class CSROpenQueries extends AppCompatActivity{
                                             // document1.update("Status", "Opened");
 
 
-
-                                            Intent intent = new Intent (getApplicationContext(), CSRFeedActivity.class );
-
                                             Intent intent = new Intent (getApplicationContext(), CSRChatActivity.class );
-
                                             intent.putExtra("queryID", queryID);
                                             intent.putExtra("customerID", customerID);
                                             intent.putExtra("staffID", staffID);
@@ -118,7 +117,6 @@ public class CSROpenQueries extends AppCompatActivity{
                     }
 
                 });
-
     }
 
     @Override

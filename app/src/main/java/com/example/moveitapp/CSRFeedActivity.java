@@ -44,7 +44,7 @@ public class CSRFeedActivity extends AppCompatActivity {
         btnNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CSRFeedActivity.class);  //  Change to respective intent
+                Intent intent = new Intent(getApplicationContext(), CSRAvailableQueries.class);  //  Change to respective intent
                 startActivity(intent);
             }
         });
@@ -52,7 +52,7 @@ public class CSRFeedActivity extends AppCompatActivity {
         btnOpened.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CSRFeedActivity.class);  //  Change to respective intent
+                Intent intent = new Intent(getApplicationContext(), CSROpenQueries.class);  //  Change to respective intent
                 startActivity(intent);
             }
         });
@@ -60,7 +60,7 @@ public class CSRFeedActivity extends AppCompatActivity {
         btnSolved.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CSRFeedActivity.class);  //  Change to respective intent
+                Intent intent = new Intent(getApplicationContext(), CSRSolvedQueries.class);  //  Change to respective intent
                 startActivity(intent);
             }
         });
