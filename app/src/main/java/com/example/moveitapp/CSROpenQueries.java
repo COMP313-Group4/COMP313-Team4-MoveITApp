@@ -94,7 +94,11 @@ public class CSROpenQueries extends AppCompatActivity{
                                             // document1.update("Status", "Opened");
 
 
+
                                             Intent intent = new Intent (getApplicationContext(), CSRFeedActivity.class );
+
+                                            Intent intent = new Intent (getApplicationContext(), CSRChatActivity.class );
+
                                             intent.putExtra("queryID", queryID);
                                             intent.putExtra("customerID", customerID);
                                             intent.putExtra("staffID", staffID);

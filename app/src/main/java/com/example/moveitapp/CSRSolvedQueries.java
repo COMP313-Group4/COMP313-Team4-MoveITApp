@@ -26,9 +26,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class CSRAvailableQueries extends AppCompatActivity {
+public class CSRSolvedQueries extends AppCompatActivity {
 
-    ListView lvOpenQueries;
+    ListView lvSolvedQueries;
 
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
@@ -44,7 +44,7 @@ public class CSRAvailableQueries extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_queries);
 
-        lvOpenQueries = (ListView) findViewById(R.id.lv_queries);
+        lvSolvedQueries = (ListView) findViewById(R.id.lv_queries);
 
         //firebase connection
         firebaseAuth = FirebaseAuth.getInstance();
@@ -59,7 +59,7 @@ public class CSRAvailableQueries extends AppCompatActivity {
         queryList = new ArrayList<>();
 
 
-        final Task<QuerySnapshot> collection = firestore.collection("OpenQueries")
+        final Task<QuerySnapshot> collection = firestore.collection("SolvedQueries")
                 .whereEqualTo("CsrID", staffID)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -70,7 +70,7 @@ public class CSRAvailableQueries extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult())
                             {
                                 // bring only the open cases; without solved queries
-                                if (document.getString("Status").equals("Opened"))
+                                if (document.getString("Status").equals("Solved"))
                                 {
                                     queryList.add(document.getString("QueryID"));
                                     queryID = document.getString("QueryID");
@@ -79,21 +79,20 @@ public class CSRAvailableQueries extends AppCompatActivity {
                                     messageBody=document.getString("Body");
                                     status = document.getString("Status");
 
-
                                     // populating the listview
                                     queryAdapter = new ArrayAdapter<String>(
                                             getApplicationContext(),
                                             android.R.layout.simple_list_item_1, queryList
                                     );
-                                    lvOpenQueries.setAdapter(queryAdapter);
+                                    lvSolvedQueries.setAdapter(queryAdapter);
 
                                     // setting up the itemclicklistner
-                                    lvOpenQueries.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    lvSolvedQueries.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                         @Override
                                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                             String queryID = (String) ((TextView)view).getText();
 
-                                            DocumentReference document1= firestore.collection("OpenQueries").document(queryID);
+                                            DocumentReference document1= firestore.collection("SolvedQueries").document(queryID);
                                             // document1.update("Status", "Opened");
 
 
