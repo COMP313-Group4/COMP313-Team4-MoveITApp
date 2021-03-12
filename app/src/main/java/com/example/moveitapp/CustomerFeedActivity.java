@@ -179,7 +179,6 @@ public class CustomerFeedActivity extends AppCompatActivity {
                                     int counter =0;
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     loadsList.add(document.getId());
-                                   // Toast.makeText(getApplicationContext(), "Current Load: " + loadsList.get(counter), Toast.LENGTH_LONG).show();
                                     counter++;
                                 }
                             } else {

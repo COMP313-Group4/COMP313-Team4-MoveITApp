@@ -101,7 +101,7 @@ public class CSRAvailableQueries extends AppCompatActivity {
                                         ref.update("CsrID", staffID);
                                         status = "Opened";
 
-                                        // openedQueires collection
+                                        // openedQueries collection
                                         DocumentReference ref2= firestore.collection("OpenQueries").document(queryID);
                                         // queryID = ref2.getId();
                                         Map<String, Object> query = new HashMap<>();

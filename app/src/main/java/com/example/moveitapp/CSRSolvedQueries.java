@@ -93,9 +93,6 @@ public class CSRSolvedQueries extends AppCompatActivity {
                                             String queryID = (String) ((TextView)view).getText();
 
                                             DocumentReference document1= firestore.collection("SolvedQueries").document(queryID);
-                                            // document1.update("Status", "Opened");
-
-
                                             Intent intent = new Intent (getApplicationContext(), CSRChatActivity.class );
                                             intent.putExtra("queryID", queryID);
                                             intent.putExtra("customerID", customerID);
@@ -107,7 +104,6 @@ public class CSRSolvedQueries extends AppCompatActivity {
                                         }
                                     });
                                 }
-
                             } // end for loop
 
                         } else {
@@ -116,8 +112,6 @@ public class CSRSolvedQueries extends AppCompatActivity {
                     }
 
                 });
-
-
     }
 
     @Override

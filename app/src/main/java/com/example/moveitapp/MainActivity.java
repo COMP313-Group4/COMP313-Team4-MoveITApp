@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         btnDriver = (Button) findViewById(R.id.btn_driver);
         btnCSR = (Button) findViewById(R.id.btn_csr);
 
-       // db = new DatabaseHelper(this);
         // click listeners
         btnCustomer.setOnClickListener(new View.OnClickListener(){
             @Override

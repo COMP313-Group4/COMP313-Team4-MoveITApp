@@ -1,8 +1,10 @@
 package com.example.moveitapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,7 +40,6 @@ public class CustomerChatActivity extends AppCompatActivity {
     FirebaseUser user;
     FirebaseFirestore firestore;
     FirebaseFirestoreSettings settings;
-    // DatabaseReference db;
 
     Button btnSendMessage, btnGoHome;
     TextView tvMessages, tvTitle;
@@ -99,8 +100,6 @@ public class CustomerChatActivity extends AppCompatActivity {
                             messageBody = (String) queryData.get("Body");
                             tvMessages.setText(messageBody);
                             etMessage.setText("");
-                            // Intent intent = new Intent (getApplicationContext(), CustomerChatActivity.class);
-
                         } else {
                             Log.d("TAG", "No such document");
                         }
@@ -119,90 +118,109 @@ public class CustomerChatActivity extends AppCompatActivity {
                 DocumentReference ref2=null;
                 // if this is a new query
                 if (queryID == null){
-                    ref2= firestore.collection("queries").document();
-                    queryID = ref2.getId();
-                    Map<String, Object> query = new HashMap<>();
-                    query.put("Status", "Submitted"); // Submitted, Opened, Resolved
-                    query.put("QueryID", ref2.getId());
-                    query.put("CustomerID", userID);
-                    query.put("CsrID", "");
-                    query.put("Body", "Customer: "+etMessage.getText().toString());
-                    query.put("Last Update", getCurrentDateTime());
-                    query.put("Title", etTitle.getText().toString());
-                    ref2.set(query).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Log.d(TAG, "onSuccess: The query successfully added for "+ userID  );
-                            etMessage.setText("");
-                            tvMessages.append(etMessage.getText().toString());
-                            etTitle.setVisibility(View.GONE);
-                            tvTitle.setVisibility(View.GONE);
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d(TAG, "onFailure: "+ e.toString());
-                        }
-                    });
-                    // update the body after clicking on send button
-                    ref2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if (task.isSuccessful()) {
-                                DocumentSnapshot document = task.getResult();
-                                if (document.exists()) {
-                                    Log.d(TAG, "DocumentSnapShot Data: " + document.getData());
-
-                                    Map<String, Object> queryData = document.getData();
-                                    messageBody = (String) queryData.get("Body");
-                                    tvMessages.setText(messageBody);
-                                } else {
-                                    Log.d("TAG", "No such document");
-                                }
-                            } else {
-                                Log.d("TAG", "get failed with: ", task.getException());
+                    if(!etMessage.getText().toString().equals("") && !etTitle.getText().toString().equals("")){
+                        ref2= firestore.collection("queries").document();
+                        queryID = ref2.getId();
+                        Map<String, Object> query = new HashMap<>();
+                        query.put("Status", "Submitted"); // Submitted, Opened, Resolved
+                        query.put("QueryID", ref2.getId());
+                        query.put("CustomerID", userID);
+                        query.put("CsrID", "");
+                        query.put("Body", "Customer: "+etMessage.getText().toString());
+                        query.put("Last Update", getCurrentDateTime());
+                        query.put("Title", etTitle.getText().toString());
+                        ref2.set(query).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d(TAG, "onSuccess: The query successfully added for "+ userID  );
+                                etMessage.setText("");
+                                tvMessages.append(etMessage.getText().toString());
+                                etTitle.setVisibility(View.GONE);
+                                tvTitle.setVisibility(View.GONE);
                             }
-                        }
-                    });
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d(TAG, "onFailure: "+ e.toString());
+                            }
+                        });
+                        // update the body after clicking on send button
+                        ref2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    DocumentSnapshot document = task.getResult();
+                                    if (document.exists()) {
+                                        Log.d(TAG, "DocumentSnapShot Data: " + document.getData());
+
+                                        Map<String, Object> queryData = document.getData();
+                                        messageBody = (String) queryData.get("Body");
+                                        tvMessages.setText(messageBody);
+                                    } else {
+                                        Log.d("TAG", "No such document");
+                                    }
+                                } else {
+                                    Log.d("TAG", "get failed with: ", task.getException());
+                                }
+                            }
+                        });
+                    } else {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(CustomerChatActivity.this);
+                        builder.setTitle("Fields cannot be empty");
+                        builder.setMessage("Please enter the title or the message").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
+                        builder.create().show();
+                    }
                 }
                 else {
-                    if (status.equals("Submitted")){
-                        ref2 = firestore.collection("queries").document(queryID);
-                    } else if (status.equals("Opened"))
-                    {
-                        ref2 = firestore.collection("OpenQueries").document(queryID);
-                    }
-                    else if (status.equals("Solved")){
-                        ref2 = firestore.collection("SolvedQueries").document(queryID);
-                    }
-
-                    // if the query exists
-                   // ref2= firestore.collection("queries").document(queryID);
-                    ref2.update("Body", messageBody + "\nCustomer: "+etMessage.getText().toString());
-                    etMessage.setText("");
-                    ref2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if (task.isSuccessful()) {
-                                DocumentSnapshot document = task.getResult();
-                                if (document.exists()) {
-                                    Log.d(TAG, "DocumentSnapShot Data: " + document.getData());
-
-                                    Map<String, Object> queryData = document.getData();
-                                    messageBody = (String) queryData.get("Body");
-                                    tvMessages.setText(messageBody);
-                                    // Intent intent = new Intent (getApplicationContext(), CustomerChatActivity.class);
-
-                                } else {
-                                    Log.d("TAG", "No such document");
-                                }
-                            } else {
-                                Log.d("TAG", "get failed with: ", task.getException());
-                            }
+                    if(!etMessage.getText().toString().equals("")) {
+                        if (status.equals("Submitted")){
+                            ref2 = firestore.collection("queries").document(queryID);
+                        } else if (status.equals("Opened"))
+                        {
+                            ref2 = firestore.collection("OpenQueries").document(queryID);
                         }
-                    });
-                }
+                        else if (status.equals("Solved")){
+                            ref2 = firestore.collection("SolvedQueries").document(queryID);
+                        }
+                        // if the query exists
+                        ref2.update("Body", messageBody + "\nCustomer: "+etMessage.getText().toString());
+                        etMessage.setText("");
+                        ref2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    DocumentSnapshot document = task.getResult();
+                                    if (document.exists()) {
+                                        Log.d(TAG, "DocumentSnapShot Data: " + document.getData());
 
+                                        Map<String, Object> queryData = document.getData();
+                                        messageBody = (String) queryData.get("Body");
+                                        tvMessages.setText(messageBody);
+                                        // Intent intent = new Intent (getApplicationContext(), CustomerChatActivity.class);
+
+                                    } else {
+                                        Log.d("TAG", "No such document");
+                                    }
+                                } else {
+                                    Log.d("TAG", "get failed with: ", task.getException());
+                                }
+                            }
+                        });
+                    }else {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(CustomerChatActivity.this);
+                        builder.setTitle("Fields cannot be empty");
+                        builder.setMessage("Please enter the message").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
+                        builder.create().show();
+                    }
+                }
             }
         });
     }

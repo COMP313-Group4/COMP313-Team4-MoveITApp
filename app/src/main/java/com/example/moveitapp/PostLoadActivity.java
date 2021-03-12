@@ -109,7 +109,6 @@ public class PostLoadActivity extends AppCompatActivity {
         btnPostLoad = (Button) findViewById(R.id.btn_postLoad);
         spinnerCategory = (Spinner) findViewById(R.id.spinner_category);
         spinnerVehicle = (Spinner) findViewById(R.id.spinner_truck);
-       // spinnerWeight = (Spinner) findViewById(R.id.spinner_weight);
         //Initialize places
         Places.initialize(getApplicationContext(), "AIzaSyBCRypkpM0GIfFscExguwBNgQkgLJXODms");
         //Setting EditText as non focusable

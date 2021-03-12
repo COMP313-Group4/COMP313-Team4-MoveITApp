@@ -68,10 +68,6 @@ public class CustomerRegisterActivity extends AppCompatActivity {
         codeEnter = findViewById(R.id.codeEnter);
         state = findViewById(R.id.state);
 
-        //tvLogin = (TextView) findViewById(R.id.tv_customerLogin);
-
-
-
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
