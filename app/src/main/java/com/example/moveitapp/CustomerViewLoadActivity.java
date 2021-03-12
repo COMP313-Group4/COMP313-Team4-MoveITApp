@@ -30,7 +30,6 @@ import java.util.List;
 
 public class CustomerViewLoadActivity extends AppCompatActivity {
 
-   // public static final String TAG = TAG;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
     FirebaseFirestoreSettings settings;
@@ -69,8 +68,6 @@ public class CustomerViewLoadActivity extends AppCompatActivity {
         //userID = firebaseAuth.getCurrentUser().getUid();
        if(firebaseAuth.getCurrentUser() != null)
         {
-            //Toast.makeText(getApplicationContext(), "Current user ID: " + user.getUid(), Toast.LENGTH_LONG).show();
-
                         final Task<QuerySnapshot> collection = firestore.collection("loads")
                                 .whereEqualTo("UserID", user.getUid())
                                 .get()
@@ -78,17 +75,10 @@ public class CustomerViewLoadActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                 if (task.isSuccessful()) {
-                                       /* int counter =0;
-                                        String documentID = "";*/
-
                                     for (QueryDocumentSnapshot document : task.getResult())
                                     {
-                                       // loadsList.add(document.getId());
                                         dateList.add(document.getString("DateTime"));
                                         destinationList.add(document.getString("Destination"));
-
-                                       // Toast.makeText(getApplicationContext(), "Current Load: " + dateList.get(counter), Toast.LENGTH_LONG).show();
-                                        //counter++;
                                         dateAdapter = new ArrayAdapter<String>(
                                                 getApplicationContext(),
                                                 android.R.layout.simple_list_item_1, dateList
@@ -99,8 +89,6 @@ public class CustomerViewLoadActivity extends AppCompatActivity {
                                                 android.R.layout.simple_list_item_1, destinationList
                                         );
                                         lvDestination.setAdapter(destinationAdapter);
-
-
                                     }
                                     lvDate.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                         @Override
@@ -118,9 +106,6 @@ public class CustomerViewLoadActivity extends AppCompatActivity {
                                             startActivity(intent);
                                         }
                                     });
-
-
-
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Error: " + task.getException(), Toast.LENGTH_LONG).show();
                                 }
@@ -128,7 +113,6 @@ public class CustomerViewLoadActivity extends AppCompatActivity {
 
                         });
         }
-
     }
 
 
