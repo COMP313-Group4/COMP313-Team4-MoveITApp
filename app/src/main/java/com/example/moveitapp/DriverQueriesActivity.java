@@ -58,7 +58,7 @@ public class DriverQueriesActivity extends AppCompatActivity {
         btnDriverQueryForm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CustomerChatActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DriverChatActivity.class);
                 startActivity(intent);
             }
         });
