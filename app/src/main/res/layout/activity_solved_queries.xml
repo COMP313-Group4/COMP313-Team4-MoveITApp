@@ -8,7 +8,7 @@
     android:background="#A5A580"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".SovledQueriesActivity">
+    tools:context=".CSRSolvedQueries">
 
 
     <TextView

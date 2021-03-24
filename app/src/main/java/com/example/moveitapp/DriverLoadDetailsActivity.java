@@ -124,7 +124,6 @@ public class DriverLoadDetailsActivity extends AppCompatActivity {
                                         Log.d(TAG, "onFailure: "+ e.toString());
                                     }
                                 });
-                                //Toast.makeText(getApplicationContext(), "User details: "+ name, Toast.LENGTH_LONG).show();
                             } else {
                                 Log.d("TAG", "No such document");
                             }
@@ -142,7 +141,6 @@ public class DriverLoadDetailsActivity extends AppCompatActivity {
 
 
         if(firebaseAuth.getCurrentUser() != null) {
-            //List<String> loadDetails = new ArrayList<String>();
             DocumentReference ref = firestore.collection("loads").document(loadID);
             ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
@@ -168,7 +166,6 @@ public class DriverLoadDetailsActivity extends AppCompatActivity {
                                     android.R.layout.simple_list_item_1, loadDetails
                             );
                             lvDetails.setAdapter(detailsAdapter);
-                            //Toast.makeText(getApplicationContext(), "User details: "+ name, Toast.LENGTH_LONG).show();
                         } else {
                             Log.d("TAG", "No such document");
                         }

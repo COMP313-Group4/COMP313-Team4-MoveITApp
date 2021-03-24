@@ -55,8 +55,6 @@ public class CustomerLoginActivity extends AppCompatActivity {
     String verificationID;
     String userPhone;
 
-
-
     //saving login credentials
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -66,8 +64,6 @@ public class CustomerLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_login);
-
-
 
         etEmail = (EditText) findViewById(R.id.et_email);
         etPassword = (EditText) findViewById(R.id.et_password);
@@ -94,19 +90,16 @@ public class CustomerLoginActivity extends AppCompatActivity {
                 super.onCodeSent(s, forceResendingToken);
                 verificationID = s;
                 token = forceResendingToken;
-              //  btnResendCode.setVisibility(View.GONE);
             }
 
             @Override
             public void onCodeAutoRetrievalTimeOut(String s){
                 super.onCodeAutoRetrievalTimeOut(s);
-               // btnResendCode.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
                 verifyAuthentication(phoneAuthCredential);
-
             }
 
             @Override
@@ -118,7 +111,6 @@ public class CustomerLoginActivity extends AppCompatActivity {
 
         // SharedPreferences
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        //preferences = getSharedPreferences("com.example.hadi_alkhashman_comp304_003_test02", Context.MODE_PRIVATE);
         editor = preferences.edit();
         checkSharedPreferences();
 
@@ -146,10 +138,6 @@ public class CustomerLoginActivity extends AppCompatActivity {
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
-
-                /*Random random = new Random();
-
-                loginCode = random.nextInt();*/
                 // authenticate the user
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -159,7 +147,6 @@ public class CustomerLoginActivity extends AppCompatActivity {
                             FirebaseUser user = firebaseAuth.getCurrentUser();
 
                            String userID = firebaseAuth.getCurrentUser().getUid();
-                           // String name = user.getDisplayName();
 
                             DocumentReference documentReference = firestore.collection("users").document(userID);
 
@@ -168,39 +155,11 @@ public class CustomerLoginActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                     if (task.isSuccessful()){
                                         DocumentSnapshot document = task.getResult();
-
-                                             //  String p = document.get("phone").toString();
-
-
-                                          //  userPhone = p;
-
-
-
                                     } else {
                                         Log.d(TAG1, "get failed with", task.getException());
                                     }
                                 }
                             });
-
-
-
-
-                            // send verification email
-                          //  FirebaseUser user = firebaseAuth.getCurrentUser();
-
-                            //user.sendEmailVerification();
-                           /* user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Toast.makeText(CustomerLoginActivity.this, "Verification email sent to you . . .", Toast.LENGTH_LONG).show();
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.d(TAG, "onFailure: Email not sent "+e.getMessage());
-                                }
-                            });
-*/
 
                             // checking if the checkbox is ticked
                             if (checkBoxRemember.isChecked()){
@@ -226,14 +185,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
                             Intent intent = new Intent(CustomerLoginActivity.this, CustomerFeedActivity.class);
                             intent.putExtra("email", email);
                             intent.putExtra("password", password);
-                           // intent.putExtra("name", name);
                             startActivity(intent);
-
-
-
-                            Toast.makeText(CustomerLoginActivity.this, "OTP Needed To Sign IN . . .", Toast.LENGTH_LONG).show();
-                            //Intent intent = new Intent();
-                            //startActivity(new Intent(getApplication(), CustomerCodeActivity.class));
                         } else {
                             Toast.makeText(CustomerLoginActivity.this, "Error: invalid email and/or password ", Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);
@@ -276,7 +228,6 @@ public class CustomerLoginActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // close the dialog
-
                     }
                 });
                 passwordRestDialog.create().show();

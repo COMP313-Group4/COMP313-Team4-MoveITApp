@@ -69,10 +69,8 @@ public class CustomerLoadDetailsActivity extends AppCompatActivity {
         
         if(firebaseAuth.getCurrentUser() != null)
         {
-            //List<String> loadDetails = new ArrayList<String>();
             final Task<QuerySnapshot> collection = firestore.collection("loads")
                     .whereEqualTo("DateTime", loadDate)
-                    //.whereEqualTo("UserID", userID)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
                     {

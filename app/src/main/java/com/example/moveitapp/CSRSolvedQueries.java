@@ -42,9 +42,9 @@ public class CSRSolvedQueries extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_queries);
+        setContentView(R.layout.activity_solved_queries);
 
-        lvSolvedQueries = (ListView) findViewById(R.id.lv_queries);
+        lvSolvedQueries = (ListView) findViewById(R.id.lv_solvedQueries);
 
         //firebase connection
         firebaseAuth = FirebaseAuth.getInstance();
@@ -93,9 +93,6 @@ public class CSRSolvedQueries extends AppCompatActivity {
                                             String queryID = (String) ((TextView)view).getText();
 
                                             DocumentReference document1= firestore.collection("SolvedQueries").document(queryID);
-                                            // document1.update("Status", "Opened");
-
-
                                             Intent intent = new Intent (getApplicationContext(), CSRChatActivity.class );
                                             intent.putExtra("queryID", queryID);
                                             intent.putExtra("customerID", customerID);
@@ -107,7 +104,6 @@ public class CSRSolvedQueries extends AppCompatActivity {
                                         }
                                     });
                                 }
-
                             } // end for loop
 
                         } else {
@@ -116,8 +112,6 @@ public class CSRSolvedQueries extends AppCompatActivity {
                     }
 
                 });
-
-
     }
 
     @Override
@@ -133,6 +127,4 @@ public class CSRSolvedQueries extends AppCompatActivity {
         startActivity(intent);
         return super.onOptionsItemSelected(item);
     }
-
-
 }

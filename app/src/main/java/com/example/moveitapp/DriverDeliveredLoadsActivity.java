@@ -74,9 +74,7 @@ public class DriverDeliveredLoadsActivity extends AppCompatActivity {
 
         if(firebaseAuth.getCurrentUser() != null)
         {
-            //Toast.makeText(getApplicationContext(), "Current user ID: " + user.getUid(), Toast.LENGTH_LONG).show();
-
-            final Task<QuerySnapshot> collection = firestore.collection("DeliveredLoads")
+          final Task<QuerySnapshot> collection = firestore.collection("DeliveredLoads")
                     .whereEqualTo("Driver ID", userId)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -89,25 +87,18 @@ public class DriverDeliveredLoadsActivity extends AppCompatActivity {
                                   loadsArrayList.add(
                                           document.getString("Pickup") + "       " + document.getString("Destination") +"\n"
                                   +document.getString("Post Date & Time") + "      " +document.getString("Delivery DateTime"));
-                                   /* loadsArrayList.add(document.getString("Destination"));
-                                    loadsArrayList.add(document.getString("Delivery DateTime"));*/
-                                   // loadsArrayList.add(document.getDouble("Delivery Fees")+" ");
-
-                                   // loadsArrayList.add(fees);
                                     loadsAdapter = new ArrayAdapter<String>(
                                             getApplicationContext(),
                                             android.R.layout.simple_list_item_1, loadsArrayList
                                     );
                                     lvDeliveredLoads.setAdapter(loadsAdapter);
                                 }
-
                             } else {
                                 Toast.makeText(getApplicationContext(), "Error: " + task.getException(), Toast.LENGTH_LONG).show();
                             }
                         }
 
                     });
-
         }
     }
 

@@ -102,7 +102,6 @@ public class CSRLoginActivity extends AppCompatActivity {
                             FirebaseUser user = firebaseAuth.getCurrentUser();
 
                             String userID = firebaseAuth.getCurrentUser().getUid();
-                            // String name = user.getDisplayName();
 
                             DocumentReference documentReference = firestore.collection("users").document(userID);
 
@@ -141,12 +140,7 @@ public class CSRLoginActivity extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), CSRFeedActivity.class);
                             intent.putExtra("email", email);
                             intent.putExtra("password", password);
-                            // intent.putExtra("name", name);
                             startActivity(intent);
-
-                            Toast.makeText(getApplicationContext(), "Successful Sign In . . .", Toast.LENGTH_LONG).show();
-                            //Intent intent = new Intent();
-                            //startActivity(new Intent(getApplication(), CustomerCodeActivity.class));
                         } else {
                             Toast.makeText(getApplicationContext(), "Error: invalid email and/or password ", Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);

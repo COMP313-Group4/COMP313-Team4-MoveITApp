@@ -77,9 +77,6 @@ public class DriverFeedActivity extends AppCompatActivity {
         btnViewQueries = (Button) findViewById(R.id.btn_viewDriverQueries);
         btnLocaiton = (Button) findViewById(R.id.btn_location);
         btnDeliveredLoads = (Button) findViewById(R.id.btn_deliveredLoads);
-       // recyclerView = findViewById(R.id.driverRecyclerView);
-
-
         //firebase connection
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
@@ -103,14 +100,11 @@ public class DriverFeedActivity extends AppCompatActivity {
         //Clear previous List
         ClearAll();
         //Get Data Method
-       // getDataFromFirebase();
         btnViewDetails = (Button) findViewById(R.id.btn_viewDetails);
 
         if(firebaseAuth.getCurrentUser() != null)
         {
-            //Toast.makeText(getApplicationContext(), "Current user ID: " + user.getUid(), Toast.LENGTH_LONG).show();
-
-            final Task<QuerySnapshot> collection = firestore.collection("loads")
+          final Task<QuerySnapshot> collection = firestore.collection("loads")
                     .whereEqualTo("Status", "Not Booked")
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -126,13 +120,6 @@ public class DriverFeedActivity extends AppCompatActivity {
                                     loadID = document.getId();
                                     loads.add("Post Date: "+document.getString("DateTime") +
                                             "\nVehicle Wanted: "+document.getString("Vehicle Wanted"));
-                                        /*    "\nPickup: "+ document.getString("Pickup") +
-                                            "\nDestination:"+document.getString("Destination"));*/
-//                                    loads.add(document.getString("Pickup"));
-//                                    loads.add(document.getString("Destination"));
-
-
-                                    // Toast.makeText(getApplicationContext(), "Current Load: " + dateList.get(counter), Toast.LENGTH_LONG).show();
                                     counter++;
                                     loadsAdapter = new ArrayAdapter<String>(
                                             getApplicationContext(),

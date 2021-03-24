@@ -39,12 +39,10 @@ public class CSRFeedActivity extends AppCompatActivity {
                 .build();
         firestore.setFirestoreSettings(settings);
 
-
-        //  TODO: Temporarily changed all onClick to same intent
         btnNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CSRFeedActivity.class);  //  Change to respective intent
+                Intent intent = new Intent(getApplicationContext(), CSRAvailableQueries.class);  //  Change to respective intent
                 startActivity(intent);
             }
         });
@@ -52,7 +50,7 @@ public class CSRFeedActivity extends AppCompatActivity {
         btnOpened.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CSRFeedActivity.class);  //  Change to respective intent
+                Intent intent = new Intent(getApplicationContext(), CSROpenQueries.class);  //  Change to respective intent
                 startActivity(intent);
             }
         });
@@ -60,7 +58,7 @@ public class CSRFeedActivity extends AppCompatActivity {
         btnSolved.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CSRFeedActivity.class);  //  Change to respective intent
+                Intent intent = new Intent(getApplicationContext(), CSRSolvedQueries.class);  //  Change to respective intent
                 startActivity(intent);
             }
         });

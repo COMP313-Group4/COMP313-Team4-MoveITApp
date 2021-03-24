@@ -1,8 +1,10 @@
 package com.example.moveitapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,7 +40,6 @@ public class CSRChatActivity extends AppCompatActivity {
     FirebaseUser user;
     FirebaseFirestore firestore;
     FirebaseFirestoreSettings settings;
-    // DatabaseReference db;
 
     Button btnSendMessage, btnSolved;
     EditText etMessage;
@@ -136,30 +137,39 @@ public class CSRChatActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // if the query exists
-                DocumentReference ref2 = firestore.collection("OpenQueries").document(queryID);
-                ref2.update("Body", messageBody + "\nStaff: "+etMessage.getText().toString());
-                etMessage.setText("");
-                ref2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                Log.d(TAG, "DocumentSnapShot Data: " + document.getData());
+                if(!etMessage.getText().toString().equals("")) {
+                    DocumentReference ref2 = firestore.collection("OpenQueries").document(queryID);
+                    ref2.update("Body", messageBody + "\nStaff: "+etMessage.getText().toString());
+                    etMessage.setText("");
+                    ref2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot document = task.getResult();
+                                if (document.exists()) {
+                                    Log.d(TAG, "DocumentSnapShot Data: " + document.getData());
 
-                                Map<String, Object> queryData = document.getData();
-                                messageBody = (String) queryData.get("Body");
-                                tvMessages.setText(messageBody);
-                                // Intent intent = new Intent (getApplicationContext(), CustomerChatActivity.class);
-
+                                    Map<String, Object> queryData = document.getData();
+                                    messageBody = (String) queryData.get("Body");
+                                    tvMessages.setText(messageBody);
+                                } else {
+                                    Log.d("TAG", "No such document");
+                                }
                             } else {
-                                Log.d("TAG", "No such document");
+                                Log.d("TAG", "get failed with: ", task.getException());
                             }
-                        } else {
-                            Log.d("TAG", "get failed with: ", task.getException());
                         }
-                    }
-                });
+                    });
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CSRChatActivity.this);
+                    builder.setTitle("Fields cannot be empty");
+                    builder.setMessage("Please enter the message").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                    builder.create().show();
+                }
             }
         }); // end btnSendMessage
 
