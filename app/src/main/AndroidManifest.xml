@@ -22,6 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".DriverChatActivity" />
+        <activity android:name=".DriverQueriesActivity" />
         <activity android:name=".DriverDeliveredLoadsActivity" />
         <activity android:name=".DriverLoadDetailsActivity" />
         <activity android:name=".DriverFeedActivity" />
