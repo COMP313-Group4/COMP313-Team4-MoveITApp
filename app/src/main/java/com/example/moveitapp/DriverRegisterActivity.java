@@ -130,6 +130,8 @@ public class DriverRegisterActivity extends AppCompatActivity {
                             user.put("Password", password);
                             user.put("Vehicle Type", vehicle);
                             user.put("License Plate", licensePlate);
+                            user.put("Latitude", "");
+                            user.put("Longitude", "");
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {

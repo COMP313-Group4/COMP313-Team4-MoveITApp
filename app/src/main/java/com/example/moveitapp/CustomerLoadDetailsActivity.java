@@ -9,11 +9,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,12 +30,19 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.widget.RatingBar;
+
 public class CustomerLoadDetailsActivity extends AppCompatActivity {
     public static final String TAG = "TAG";
-    String email, password, name, userID, loadDate;
+    String email, password, name, userID, loadDate, loadID, driverID;
+
+
 
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
@@ -45,6 +56,10 @@ public class CustomerLoadDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_load_details);
+
+        final RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        Button submitRating = (Button) findViewById(R.id.btn_submitRating);
+
 
         lvDetails = (ListView) findViewById(R.id.lv_details);
         lvColumns=(ListView) findViewById(R.id.lv_columns);
@@ -66,6 +81,9 @@ public class CustomerLoadDetailsActivity extends AppCompatActivity {
                 .build();
         firestore.setFirestoreSettings(settings);
         FirebaseUser user = firebaseAuth.getCurrentUser();
+
+
+
         
         if(firebaseAuth.getCurrentUser() != null)
         {
@@ -84,6 +102,7 @@ public class CustomerLoadDetailsActivity extends AppCompatActivity {
 
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     loadDetails.add(document.getId());
+                                    loadID = document.getId().toString();
                                     loadColumns.add("Load ID: ");
                                     loadDetails.add(document.getString("Status"));
                                     loadColumns.add("Status: ");
@@ -98,6 +117,7 @@ public class CustomerLoadDetailsActivity extends AppCompatActivity {
                                     loadColumns.add("Destination: ");
                                     loadDetails.add(document.getString("Driver ID"));
                                     loadColumns.add("Driver ID: ");
+                                    driverID= document.getString("Driver ID");
                                     loadDetails.add(document.getString("Pickup"));
                                     loadColumns.add("Pickup:");
                                     loadDetails.add(document.getString("Driver Location"));
@@ -122,6 +142,39 @@ public class CustomerLoadDetailsActivity extends AppCompatActivity {
                         }
                     });
         }
+
+        // perform click event on button
+        submitRating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // get values and then displayed in a toast
+                String totalStars = "Total Stars:: " + ratingBar.getNumStars();
+                String rating = "Your Rating: " + ratingBar.getRating();
+                Toast.makeText(getApplicationContext(), totalStars + "\n" + rating, Toast.LENGTH_LONG).show();
+
+                // submitting the rating object to database
+                DocumentReference documentReference = firestore.collection("Ratings").document(loadID);
+                Map<String, Object> loadRating = new HashMap<>();
+                loadRating.put("Customer ID", userID);
+                loadRating.put("Load ID", loadID );
+                loadRating.put("Driver ID", driverID);
+                loadRating.put("Rating", rating);
+                loadRating.put("Rating Date", Calendar.getInstance().getTime());
+
+
+                documentReference.set(loadRating).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "onSuccess: Rating successfully filled for "+ userID  );
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "onFailure: "+ e.toString());
+                    }
+                });
+            }
+        });
 
     }
 
