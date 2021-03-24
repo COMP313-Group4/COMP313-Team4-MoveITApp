@@ -76,7 +76,7 @@ public class DriverQueriesActivity extends AppCompatActivity {
         if (firebaseAuth.getCurrentUser() != null)
         {
             Task<QuerySnapshot> collection = firestore.collection("queries")
-                    .whereEqualTo("CustomerID", firebaseAuth.getCurrentUser().getUid())
+                    .whereEqualTo("DriverID", firebaseAuth.getCurrentUser().getUid())
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
@@ -115,7 +115,7 @@ public class DriverQueriesActivity extends AppCompatActivity {
 
                     String queryId = (String) ((TextView)view).getText();
 
-                    Intent intent = new Intent (getApplicationContext(), CustomerChatActivity.class );
+                    Intent intent = new Intent (getApplicationContext(), DriverChatActivity.class );
                     intent.putExtra("queryID", queryId);
                     intent.putExtra("email", email);
                     intent.putExtra("status", status);

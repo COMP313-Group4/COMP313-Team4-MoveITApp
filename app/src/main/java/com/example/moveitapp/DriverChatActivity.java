@@ -109,7 +109,7 @@ public class DriverChatActivity extends AppCompatActivity{
                             messageBody = (String) queryData.get("Body");
                             tvMessages.setText(messageBody);
                             etMessage.setText("");
-                            // Intent intent = new Intent (getApplicationContext(), CustomerChatActivity.class);
+                            // Intent intent = new Intent (getApplicationContext(), DriverChatActivity.class);
 
                         } else {
                             Log.d("TAG", "No such document");
@@ -134,9 +134,9 @@ public class DriverChatActivity extends AppCompatActivity{
                     Map<String, Object> query = new HashMap<>();
                     query.put("Status", "Submitted"); // Submitted, Opened, Resolved
                     query.put("QueryID", ref2.getId());
-                    query.put("CustomerID", userID);
+                    query.put("DriverID", userID);
                     query.put("CsrID", "");
-                    query.put("Body", "Customer: "+etMessage.getText().toString());
+                    query.put("Body", "Driver: "+etMessage.getText().toString());
                     query.put("Last Update", getCurrentDateTime());
                     query.put("Title", etTitle.getText().toString());
                     ref2.set(query).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -188,7 +188,7 @@ public class DriverChatActivity extends AppCompatActivity{
 
                     // if the query exists
                     // ref2= firestore.collection("queries").document(queryID);
-                    ref2.update("Body", messageBody + "\nCustomer: "+etMessage.getText().toString());
+                    ref2.update("Body", messageBody + "\nDriver: "+etMessage.getText().toString());
                     etMessage.setText("");
                     ref2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
@@ -201,7 +201,7 @@ public class DriverChatActivity extends AppCompatActivity{
                                     Map<String, Object> queryData = document.getData();
                                     messageBody = (String) queryData.get("Body");
                                     tvMessages.setText(messageBody);
-                                    // Intent intent = new Intent (getApplicationContext(), CustomerChatActivity.class);
+                                    // Intent intent = new Intent (getApplicationContext(), DriverChatActivity.class);
 
                                 } else {
                                     Log.d("TAG", "No such document");
@@ -232,7 +232,7 @@ public class DriverChatActivity extends AppCompatActivity{
         DocumentReference ref = firestore.collection("queries").document();
         Map<String, Object> query = new HashMap<>();
         query.put("QueryID", ref.getId());
-        query.put("CustomerID", userID);
+        query.put("DriverID", userID);
         query.put("CsrID", "");
         query.put("Body", etMessage.getText().toString());
         query.put("Last Update", getCurrentDateTime());
