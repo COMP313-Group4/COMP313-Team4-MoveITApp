@@ -53,6 +53,7 @@ public class DriverFeedActivity extends AppCompatActivity {
     Button resendCode;
     TextView verifyMsg;
 
+    Button btnViewQueries;
     Button btnLocaiton;
 
     FirebaseAuth firebaseAuth;
@@ -73,6 +74,7 @@ public class DriverFeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_feed);
         fAuth = FirebaseAuth.getInstance();
+        btnViewQueries = (Button) findViewById(R.id.btn_viewDriverQueries);
         btnLocaiton = (Button) findViewById(R.id.btn_location);
         btnDeliveredLoads = (Button) findViewById(R.id.btn_deliveredLoads);
        // recyclerView = findViewById(R.id.driverRecyclerView);
@@ -160,6 +162,15 @@ public class DriverFeedActivity extends AppCompatActivity {
 
         }
 
+        btnViewQueries.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(DriverFeedActivity.this, DriverQueriesActivity.class);
+                intent.putExtra("userID", userId);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         btnDeliveredLoads.setOnClickListener(new View.OnClickListener() {
             @Override
