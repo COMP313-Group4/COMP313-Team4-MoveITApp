@@ -76,7 +76,7 @@ public class DriverQueriesActivity extends AppCompatActivity {
         if (firebaseAuth.getCurrentUser() != null)
         {
             Task<QuerySnapshot> collection = firestore.collection("queries")
-                    .whereEqualTo("DriverID", firebaseAuth.getCurrentUser().getUid())
+                    .whereEqualTo("CustomerID", firebaseAuth.getCurrentUser().getUid())
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
