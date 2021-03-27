@@ -65,11 +65,6 @@ public class DriverLocation extends FragmentActivity implements OnMapReadyCallba
         LocationListener, GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
-    //
-
-
-    //
-
     FusedLocationProviderClient fusedLocationProviderClient;
     private GoogleMap mMap;
     Location mLastLocation;

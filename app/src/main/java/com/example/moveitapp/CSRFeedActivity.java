@@ -39,8 +39,6 @@ public class CSRFeedActivity extends AppCompatActivity {
                 .build();
         firestore.setFirestoreSettings(settings);
 
-
-        //  TODO: Temporarily changed all onClick to same intent
         btnNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

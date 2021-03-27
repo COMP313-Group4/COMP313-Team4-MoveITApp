@@ -43,15 +43,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verfiy_phone);
-
         Intent intent = getIntent();
-       // phone = intent.getStringExtra("phone");
-
-       // tvPhone.setText(phone);
-
-
-
-
         one = (EditText) findViewById(R.id.otpOne);
         two = (EditText) findViewById(R.id.otpTwo);
         three = (EditText) findViewById(R.id.otpThree);
@@ -119,17 +111,12 @@ public class VerifyPhoneActivity extends AppCompatActivity {
             }
         };
 
-
-
-
         btnResendCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 resentOTP(phone);
             }
         });
-
-
     }
 
 
