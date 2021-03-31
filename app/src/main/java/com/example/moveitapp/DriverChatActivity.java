@@ -134,7 +134,7 @@ public class DriverChatActivity extends AppCompatActivity{
                     Map<String, Object> query = new HashMap<>();
                     query.put("Status", "Submitted"); // Submitted, Opened, Resolved
                     query.put("QueryID", ref2.getId());
-                    query.put("DriverID", userID);
+                    query.put("CustomerID", userID);
                     query.put("CsrID", "");
                     query.put("Body", "Driver: "+etMessage.getText().toString());
                     query.put("Last Update", getCurrentDateTime());
