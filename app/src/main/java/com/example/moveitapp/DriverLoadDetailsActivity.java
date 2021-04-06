@@ -80,10 +80,24 @@ public class DriverLoadDetailsActivity extends AppCompatActivity {
         btnAcceptLoad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DocumentReference driverRef = firestore.collection("drivers").document(user.getUid());
+                final Object[] location = new Object[1];
+
+                driverRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        location[0] = documentSnapshot.get("Location");
+                    }
+                });
 
                 DocumentReference ref = firestore.collection("loads").document(loadID);
                 ref.update("Status", "Booked");
                 ref.update("Driver ID", user.getUid());
+//                if(location.length != 0){
+//                    ref.update("Driver Location", location);
+//                }else{
+                    ref.update("Driver Location", "43.7854° N, 79.2264° W");
+//                }
                 btnConfirmDelivery.setVisibility(View.VISIBLE);
                 btnAcceptLoad.setVisibility(View.INVISIBLE);
 

@@ -1,15 +1,27 @@
 package com.example.moveitapp;
 
+import java.util.ArrayList;
+
 public class Driver {
     String name, email, phoneNumber, vehicleType, licencePlate, address;
+    ArrayList<String> location;
 
-    public Driver(String name, String email, String phoneNumber, String vehicleType, String licencePlate, String address) {
+    public Driver(String name, String email, String phoneNumber, String vehicleType, String licencePlate, String address, ArrayList<String> location) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.vehicleType = vehicleType;
         this.licencePlate = licencePlate;
         this.address = address;
+        this.location = location;
+    }
+
+    public ArrayList<String> getLocation() {
+        return location;
+    }
+
+    public void setLocation(ArrayList<String> location) {
+        this.location = location;
     }
 
     public String getName() {
