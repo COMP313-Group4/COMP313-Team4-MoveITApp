@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -41,6 +42,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -51,10 +54,17 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -71,12 +81,16 @@ public class DriverLocation extends FragmentActivity implements OnMapReadyCallba
     Marker mCurrLocationMarker;
     GoogleApiClient mGoogleApiClient;
     LocationRequest mLocationRequest;
+    FirebaseFirestore firestore;
 
     EditText locationSearch;
     Toolbar toolbar;
 
     Button btnAddress;
     TextView tvLat, tvLong, tvCountry, tvCity, tvAddress;
+    String loadID;
+    FirebaseAuth fAuth;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +100,10 @@ public class DriverLocation extends FragmentActivity implements OnMapReadyCallba
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        firestore = FirebaseFirestore.getInstance();
+        fAuth = FirebaseAuth.getInstance();
+        Intent intent = getIntent();
+        loadID = intent.getStringExtra("loadID");
 
         toolbar = findViewById(R.id.toolbar);
 
@@ -105,7 +123,14 @@ public class DriverLocation extends FragmentActivity implements OnMapReadyCallba
                 if (ActivityCompat.checkSelfPermission(DriverLocation.this,
                         Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     // when permission granted
-                    getLocation();
+                    if(fAuth.getCurrentUser() != null)
+                    {
+                        userId = fAuth.getCurrentUser().getUid();
+                        Map<String, Object> locationUpdate = new HashMap<>();
+                        locationUpdate.put("Location", getLocation());
+                        Task<Void> documentReference = firestore.collection("drivers").document(userId).update(locationUpdate);
+                    }
+//                    getLocation();
                 } else {
                     // when permission denied
                     ActivityCompat.requestPermissions(DriverLocation.this,
@@ -114,12 +139,14 @@ public class DriverLocation extends FragmentActivity implements OnMapReadyCallba
                 }
             }
         });
+
     }
 
-    public Location getLocation() {
+    public ArrayList<String> getLocation() {
          LatLng latLng;
         //Location location1;
-         Map<String, String> location1 = new HashMap<>();
+        final ArrayList<String> loc = new ArrayList<>();
+         final Map<String, String> location1 = new HashMap<>();
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -145,7 +172,11 @@ public class DriverLocation extends FragmentActivity implements OnMapReadyCallba
                         List<Address> addresses = geocoder.getFromLocation(
                                 location.getLatitude(), location.getLongitude(), 1
                         );
-                        //location1.put(location.getLatitude(), location.getLongitude());
+                        String lat = String.valueOf(location.getLatitude());
+                        String log = String.valueOf(location.getLongitude());
+                        loc.add(lat);
+                        loc.add(log);
+//                        location1.put(location.getLatitude(), location.getLongitude());
 
 
 
@@ -187,7 +218,11 @@ public class DriverLocation extends FragmentActivity implements OnMapReadyCallba
             }
 
         });
-        return null;
+        if(loc.isEmpty()){
+            loc.add("43.7854° N");
+            loc.add("79.2264° W");
+        }
+        return loc;
     }
 
     @Override
