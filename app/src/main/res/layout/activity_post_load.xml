@@ -135,27 +135,6 @@
             android:hint="weight in KG"
             android:textAlignment="center"
             android:textColor="#000000" />
-        <!--<Spinner
-            android:id="@+id/spinner_weight"
-            style="@style/Widget.AppCompat.Spinner.Underlined"
-            android:layout_width="264dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:textAlignment="center"
-            android:contextClickable="true"
-            android:background="#FFFFFF"
-            android:textColor="#000000"
-            android:dropDownWidth="match_parent"
-            android:entries="@array/weight_category"
-            android:padding="10dp"
-            android:popupElevation="18dp"
-            android:spinnerMode="dialog"
-            android:splitMotionEvents="false"
-            android:hint="Select Load"
-            android:layout_gravity="center_horizontal" />-->
-
 
         <Spinner
             android:id="@+id/spinner_truck"

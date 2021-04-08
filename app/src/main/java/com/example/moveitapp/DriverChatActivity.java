@@ -50,7 +50,6 @@ public class DriverChatActivity extends AppCompatActivity{
     FirebaseUser user;
     FirebaseFirestore firestore;
     FirebaseFirestoreSettings settings;
-    // DatabaseReference db;
 
     Button btnSendMessage, btnGoHome;
     TextView tvMessages, tvTitle;
@@ -261,10 +260,6 @@ public class DriverChatActivity extends AppCompatActivity{
             @Override
             public void onSuccess(Void aVoid) {
                 Log.d(TAG, "onSuccess: The load successfully posted for "+ userID  );
-               /* Intent intent = new Intent (getApplicationContext(), );
-                intent.putExtra("email", email);
-                intent.putExtra("password", password);
-                startActivity(intent);*/
 
             }
         }).addOnFailureListener(new OnFailureListener() {

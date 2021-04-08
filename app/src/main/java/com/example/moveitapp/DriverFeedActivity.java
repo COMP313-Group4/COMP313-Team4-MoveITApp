@@ -205,7 +205,6 @@ public class DriverFeedActivity extends AppCompatActivity {
 
                                 recyclerAdapter = new RecyclerAdapter(getApplicationContext(), loadsArrayList);
                                 recyclerView.setAdapter(recyclerAdapter);
-                                //recyclerAdapter.notifyDataSetChanged();
                             }
 
                         } else {
