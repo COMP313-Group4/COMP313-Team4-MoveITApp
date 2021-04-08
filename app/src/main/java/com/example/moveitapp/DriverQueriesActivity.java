@@ -110,9 +110,6 @@ public class DriverQueriesActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                           /* String loadDate = (String) ((TextView)view).getText();
-                            Toast.makeText(getApplicationContext(), "Load: " + loadDate, Toast.LENGTH_LONG).show();*/
-
                     String queryId = (String) ((TextView)view).getText();
 
                     Intent intent = new Intent (getApplicationContext(), DriverChatActivity.class );

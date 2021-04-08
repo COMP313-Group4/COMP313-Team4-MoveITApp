@@ -176,7 +176,6 @@ public class DriverLocation extends FragmentActivity implements OnMapReadyCallba
                         String log = String.valueOf(location.getLongitude());
                         loc.add(lat);
                         loc.add(log);
-//                        location1.put(location.getLatitude(), location.getLongitude());
 
 
 
@@ -214,7 +213,6 @@ public class DriverLocation extends FragmentActivity implements OnMapReadyCallba
                     }
 
                 }
-                //latLng = new LatLng(location.getLatitude(), location.getLongitude());
             }
 
         });
@@ -227,20 +225,6 @@ public class DriverLocation extends FragmentActivity implements OnMapReadyCallba
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        /*mMap = googleMap;
-
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.ACCESS_FINE_LOCATION)
-                    == PackageManager.PERMISSION_GRANTED) {
-                buildGoogleApiClient();
-                mMap.setMyLocationEnabled(true);
-            }
-        }
-        else {
-            buildGoogleApiClient();
-            mMap.setMyLocationEnabled(true);
-        }*/
         mMap=googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
@@ -330,9 +314,6 @@ public class DriverLocation extends FragmentActivity implements OnMapReadyCallba
         // clear all markers
         mMap.clear();
 
-        // re add the current location marker
-        // onMapReady(mMap);
-
         locationSearch = (EditText) findViewById(R.id.editText);
         String location = locationSearch.getText().toString();
         List<Address> addressList = null;
@@ -346,12 +327,9 @@ public class DriverLocation extends FragmentActivity implements OnMapReadyCallba
                     e.printStackTrace();
                 }
 
-                // MarkerOptions marker = new MarkerOptions();
-
                 Address address = addressList.get(0);
                 LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
                 mMap.addMarker(new MarkerOptions().position(latLng).title(location));
-                //mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
                 float zoomLevel = 16.0f;
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel));
                 closeKeyboard();
@@ -411,16 +389,6 @@ public class DriverLocation extends FragmentActivity implements OnMapReadyCallba
         }
     }
 
-    /*public void onZoom (View view){
-        if (view.getId() == R.id.zoomIn){
-            mMap.animateCamera(CameraUpdateFactory.zoomIn());
-        }
-        if (view.getId() == R.id.zoomOut){
-            mMap.animateCamera(CameraUpdateFactory.zoomOut());
-
-        }
-    }
-*/
     public void currentAddress(View view){
         try{
             //mMap.clear();
